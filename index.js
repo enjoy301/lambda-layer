@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import inquirer from "inquirer";
+import { exec } from "child_process";
 
 console.clear();
 const runtime = await inquirer.prompt([
@@ -42,3 +43,11 @@ switch (version.version) {
   default:
     console.log(3);
 }
+
+exec("sh run-docker.sh", (error, stdout, stderr) => {
+  console.log("stdout: " + stdout);
+  console.log("stderr: " + stderr);
+  if (error !== null) {
+    console.log("exec error: " + error);
+  }
+});
