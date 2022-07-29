@@ -44,10 +44,10 @@ switch (version.version) {
     console.log(3);
 }
 
+console.log("도커 켜는 중...");
 exec("sh run-docker.sh", (error, stdout, stderr) => {
-  console.log("stdout: " + stdout);
-  console.log("stderr: " + stderr);
-  if (error !== null) {
-    console.log("exec error: " + error);
+  if (stdout.length !== 0) {
+    console.log("도커 켜는 중 에러 발생");
+    return;
   }
 });
